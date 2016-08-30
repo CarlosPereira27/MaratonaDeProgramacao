@@ -45,9 +45,6 @@ public class B {
 		if (optVenda) {
 			lucro += venda-(compra+c);
 		}
-//		if (p[n-1] > compra+c) {
-//			lucro += p[n-1]-(compra+c);
-//		}
 		System.out.println(lucro);
 	}
 
