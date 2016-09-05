@@ -93,17 +93,17 @@ public class D {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(in.readLine().trim());
+        int n = Integer.parseInt(in.readLine());
         int[] fe = new int[n];
-        String[] strs = in.readLine().trim().split(" ");
+        String[] strs = in.readLine().split(" ");
         long somaFe = 0;
         for (int i = 0; i < n; i++) {
         	fe[i] = Integer.parseInt(strs[i]);
         	somaFe += fe[i];
         }
-        int m = Integer.parseInt(in.readLine().trim());;
+        int m = Integer.parseInt(in.readLine());;
         int[] fs = new int[m];
-        strs = in.readLine().trim().split(" ");
+        strs = in.readLine().split(" ");
         long somaFs = 0;
         for (int i = 0; i < m; i++) {
         	fs[i] = Integer.parseInt(strs[i]);
