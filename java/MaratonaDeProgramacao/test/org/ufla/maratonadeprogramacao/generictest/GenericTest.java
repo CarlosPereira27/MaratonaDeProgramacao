@@ -26,12 +26,15 @@ public class GenericTest {
 		String line, actLine;
 		boolean error = false;
 		StringBuffer sbSol, sbActSol;
-		String[] testFiles = (new File(configuration.testsAdress)).list();
-		for (String testFile : testFiles) {
-			if (testFile.contains(".sol")) {
+		File[] testFiles = (new File(configuration.testsAdress)).listFiles();
+		for (File testFile : testFiles) {
+			if (testFile.isDirectory()) {
 				continue;
 			}
-			testFile = configuration.testsAdress+testFile;
+			if (testFile.getName().contains(".sol")) {
+				continue;
+			}
+			//testFile = configuration.testsAdress+testFile;
 			p = Runtime.getRuntime().exec(configuration.command, null, 
 					configuration.binDirectory);
 
@@ -51,7 +54,8 @@ public class GenericTest {
 			//Conferindo a saída
 			sbSol = new StringBuffer();
 			sbActSol = new StringBuffer();
-			BufferedReader brSol = new BufferedReader(new FileReader(testFile.replace(".in", ".sol"))); 
+			BufferedReader brSol = new BufferedReader(new FileReader(configuration.testsAdress 
+					+ testFile.getName().replace(".in", ".sol"))); 
 			BufferedReader brActSol = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			while ((line = brSol.readLine()) != null) {
 				actLine = brActSol.readLine();
